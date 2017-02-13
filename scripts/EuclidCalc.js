@@ -1,6 +1,6 @@
 "use strict";
 
-export class EuclidCalc{
+class EuclidCalc{
 
   static calcNextA(a, q, index){
     return (a[index - 2] - a[index - 1] * q[index]);
