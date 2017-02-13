@@ -1,2 +1,2 @@
 # ProgressiveEuklid
-Progressive web application for the euclidian algorithm.
+Progressive web application for the extended euclidian algorithm.
