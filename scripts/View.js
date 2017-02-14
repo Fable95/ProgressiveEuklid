@@ -17,8 +17,8 @@ class View {
     return /[1-9][0-9]*/.test(string);
   }
   inputEventListener(event){
-    if(this.isInt(this.inputX) && this.isInt(this.inputY)){
-      this.generateHTMLTable(Number.parseInt(this.inputX), Number.parseInt(this.inputY));
+    if(View.isInt(this.inputX.value) && View.isInt(this.inputY.value)){
+      View.generateHTMLTable(Number.parseInt(this.inputX.value), Number.parseInt(this.inputY.value));
     }
     console.log(this.inputX.value);
     console.log(this.inputY.value);
@@ -46,3 +46,5 @@ class View {
 
   }
 }
+
+new View();
