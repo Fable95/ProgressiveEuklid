@@ -13,7 +13,7 @@ class View {
             arr.reduce( (stringSoFar, n) => stringSoFar + `<td>${n}</td>`, "") +
             "</tr>";
   }
-  static isInt(string){
+  static isInt(string) {
     return /[1-9][0-9]*/.test(string);
   }
   inputEventListener(event){
