@@ -20,7 +20,7 @@ gulp.task("js-optimize", () => {
 
 gulp.task("html-optimize", () => {
     return gulp.src('index.html')
-        .pipe(htmlreplace({"compressed-js": 'scripts/app.js'}))
+        .pipe(htmlreplace({"compressed-js": '<script src="scripts/app.js" async></script>'}))
         .pipe(gulp.dest('dist'));
 });
 
