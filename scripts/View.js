@@ -53,11 +53,15 @@ class View {
     document.querySelector('.euclid-table-wrapper').innerHTML = table;
   }
   static verticalTableRow(tableData, index){
-    let retArr = "";
-    return (`<tr><td>${tableData.a[index]}</td><td>${tableData.b[index]}</td><td>${tableData.q[index]}</td><td>${tableData.s[index]}</td><td>${tableData.t[index]}</td></tr>`);
+    let retArr = Object.keys(tableData).map(k => tableData[k][index]);
+    return "<tr>" + retArr.reduce( (stringSoFar, n) => stringSoFar + `<td>${n}</td>`, "") + "</tr>";
+  }
+  static verticalHeaderRow(){
+    let labelRow = ["a", "b", "q", "s", "t"];
+    return "<tr>" + labelRow.reduce( (stringSoFar, n) => stringSoFar + `<th>${n}<sub>i</sub></th>`, "") + "</tr>";
   }
   static generateVerticalHTMLTable(tableData){
-    let headerRow = "<tr><th>a<sub>i</sub></th><th>b<sub>i</sub></th><th>q<sub>i</sub></th><th>s<sub>i</sub></th><th>t<sub>i</sub></th></tr>";
+    let headerRow = View.verticalHeaderRow();
     let table = `<table> ${headerRow}`;
     for (let i = 0; i < tableData.a.length; i++) {
       table += View.verticalTableRow(tableData, i);
