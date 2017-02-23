@@ -4,10 +4,12 @@
 class View {
   
   constructor(){
+    this.input = document.querySelector('.input-wrapper');
+    this.viewSwitch = document.querySelector('.view-switch');
     this.inputX = document.querySelector('.x-input');
     this.inputY = document.querySelector('.y-input');
-    this.inputX.addEventListener("input", this.inputEventListener.bind(this));
-    this.inputY.addEventListener("input", this.inputEventListener.bind(this));
+    this.viewSwitch.addEventListener("click", this.inputEventListener.bind(this));
+    this.input.addEventListener("input", this.inputEventListener.bind(this));
   }
 
   static convertToTableRow(rowLabel, arr) {
@@ -33,15 +35,22 @@ class View {
 
   inputEventListener(event){
     if(View.isInt(this.inputX.value) && View.isInt(this.inputY.value)){
-      let tableData = EuclidCalc.calcHorizontal(Number.parseInt(this.inputX.value), Number.parseInt(this.inputY.value));
-      View.generateHTMLTable(tableData);
-      View.updateExampleFormulas(tableData);
+      let x = Number.parseInt(this.inputX.value);
+      let y = Number.parseInt(this.inputY.value);
+      if(this.viewSwitch.checked){
+        let tableData = EuclidCalc.calcVertical(x, y);
+        View.generateVerticalHTMLTable(tableData);
+      } else {
+        let tableData = EuclidCalc.calcHorizontal(x, y);
+        View.generateHorizontalHTMLTable(tableData);
+        View.updateExampleFormulas(tableData);
+      }
     }
     //console.log(this.inputX.value);
     //console.log(this.inputY.value);
   }
 
-  static generateHTMLTable(tableData) {
+  static generateHorizontalHTMLTable(tableData) {
     
     let table = document.createElement('table');
     let indexRow = document.createElement('tr');
@@ -100,6 +109,19 @@ class View {
     aEl.innerHTML = a < 0 ? `(${a})` : a;
     bEl.innerHTML = b < 0 ? `(${b})` : b;
     gcd.innerHTML = tableData.r[tableData.r.length - 2];
+  }
+  static verticalTableRow(tableData, index){
+    let retArr = "";
+    return (`<tr><td>${tableData.a[index]}</td><td>${tableData.b[index]}</td><td>${tableData.q[index]}</td><td>${tableData.s[index]}</td><td>${tableData.t[index]}</td></tr>`);
+  }
+  static generateVerticalHTMLTable(tableData){
+    let headerRow = "<tr><th>a<sub>i</sub></th><th>b<sub>i</sub></th><th>q<sub>i</sub></th><th>s<sub>i</sub></th><th>t<sub>i</sub></th></tr>";
+    let table = `<table> ${headerRow}`;
+    for (let i = 0; i < tableData.a.length; i++) {
+      table += View.verticalTableRow(tableData, i);
+    }
+    table += "</table>";
+    document.querySelector('.euclid-table-wrapper').innerHTML = table;
   }
 }
 

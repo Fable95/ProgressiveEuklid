@@ -12,7 +12,7 @@
       }
 
       .horizontal-gcd-formula td {
-        min-width: 30px;
+        min-width: 40px;
       }
 
       .horizontal-gcd-formula-example {
@@ -22,10 +22,13 @@
     </style>
   </head>
   <body>
-    <input type="number" class="x-input"></input>
-    <input type="number" class="y-input"></input>
+    <input type="checkbox" class="view-switch">vertical-view
+    <div class="input-wrapper">
+      <input type="number" class="x-input"></input>
+      <input type="number" class="y-input"></input>
+    </div>
     <div class="euclid-table-wrapper"></div>
-    
+
     <table class="horizontal-gcd-formula">
       <tr>
         <td>x</td>
