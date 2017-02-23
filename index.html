@@ -4,12 +4,54 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .horizontal-gcd-formula, .horizontal-gcd-formula-example {
+        font-family: Georgia,"Times New Roman",Times,serif;
+        font-size: 36px;
+        text-align: center;
+      }
+
+      .horizontal-gcd-formula td {
+        min-width: 30px;
+      }
+
+      .horizontal-gcd-formula-example {
+        opacity: 1;
+      }
+
+    </style>
   </head>
   <body>
     <input type="number" class="x-input"></input>
     <input type="number" class="y-input"></input>
     <div class="euclid-table-wrapper"></div>
     
+    <table class="horizontal-gcd-formula">
+      <tr>
+        <td>x</td>
+        <td>⋅</td>
+        <td>a<sub>i</sub></td>
+        <td>+</td>
+        <td>y</td>
+        <td>⋅</td>
+        <td>b<sub>i</sub></td>
+        <td>=</td>
+        <td>gcd(x,y)</td>
+      </tr>
+
+      <tr class="horizontal-gcd-formula-example">
+        <td class="x">x</td>
+        <td>⋅</td>
+        <td class="a">a<sub>i</sub></td>
+        <td>+</td>
+        <td class="y">y</td>
+        <td>⋅</td>
+        <td class="b">b<sub>i</sub></td>
+        <td>=</td>
+        <td class="gcd">gcd(x,y)</td>
+      </tr>
+    </table>
+
     <!-- build:compressed-js -->
     <script src="/scripts/EuclidCalc.js" async></script>
     <script src="/scripts/View.js" async></script>
